@@ -1,0 +1,59 @@
+{
+  "name": "get-full-year-wasm",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.0.0",
+  "description": "Tiny util to get full year. Performant: thanks to WebAssembly",
+  "main": "build/release.js",
+  "types": "build/release.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElKornacio/get-full-year-wasm.git"
+  },
+  "files": [
+    "build/**/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint src/*.ts",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "start": "npx serve . --listen 3900"
+  },
+  "keywords": [
+    "get",
+    "full",
+    "year",
+    "wasm"
+  ],
+  "author": "Daniel S",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "22.10.1",
+    "@typescript-eslint/eslint-plugin": "8.16.0",
+    "@typescript-eslint/parser": "8.16.0",
+    "assemblyscript": "^0.27.31",
+    "eslint": "9.15.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-import-resolver-typescript": "3.7.0",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-prefer-arrow": "1.2.3",
+    "eslint-plugin-unused-imports": "4.1.4",
+    "prettier": "3.3.3",
+    "typescript": "5.7.2"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  }
+}

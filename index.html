@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module">
+import { getFullYear } from "./build/release.js";
+
+const fullYearSpan = document.getElementById("full-year");
+fullYearSpan.innerText = await getFullYear(true);
+</script>
+</head>
+<body>
+
+    Current full year: <span id="full-year">Loading...</span>
+
+</body>
+</html>
